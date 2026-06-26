@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 1 - Ejercicio 3</title>
+    <style>
+        .item {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .seleccionado {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="item">Inicio</li>
+        <li class="item">Servicios</li>
+        <li class="item">Nosotros</li>
+        <li class="item">Contacto</li>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+// Seleccionamos TODOS los elementos con esa clase
+const items = document.querySelectorAll(".item");
+// Recorremos cada ítem con forEach
+items.forEach(function(item) {
+item.addEventListener("click", function() {
+// Primero quitamos "seleccionado" de TODOS
+items.forEach(function(i) {
+i.classList.remove("seleccionado");
+});
+// Luego se lo agregamos solo al que se hizo clic
+item.classList.add("seleccionado");
+});
+});
+});
+    </script>
+    <footer>Alumno: Tomás Carreras Scheitlin</footer>
+</body>
+</html>

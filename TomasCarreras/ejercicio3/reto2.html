@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 2 - Ejercicio 3</title>
+    <style>
+        .galeria {
+            display: flex;
+            gap: 10px;
+        }
+
+        .foto {
+            width: 100px;
+            height: 100px;
+            background-color: #ccccccd3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .seleccionado {
+            border: 6px solid #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="galeria">
+        <div class="foto">Foto 1</div>
+        <div class="foto">Foto 2</div>
+        <div class="foto">Foto 3</div>
+        <div class="foto">Foto 4</div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+// Seleccionamos TODOS los elementos con esa clase
+const items = document.querySelectorAll(".foto");
+// Recorremos cada ítem con forEach
+items.forEach(function(item) {
+item.addEventListener("click", function() {
+// Primero quitamos "seleccionado" de TODOS
+items.forEach(function(i) {
+i.classList.remove("seleccionado");
+});
+// Luego se lo agregamos solo al que se hizo clic
+item.classList.add("seleccionado");
+});
+});
+});
+    </script>
+    <footer>Alumno: Tomás Carreras Scheitlin</footer>
+</body>
+</html>
