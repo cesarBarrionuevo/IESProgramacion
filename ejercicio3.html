@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0%;
+        }
+        .barra{
+            display: flex;
+            background-color: aquamarine;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .links{
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            
+        }
+        .links a{
+            text-decoration: none;
+            font-size: 22px;
+        }
+        .activo a{
+            color: white;
+            text-decoration: underline;
+            
+        }
+        .contenedor{
+            display: flex;
+            gap: 15px;
+        }
+        .caja{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 150px;
+            height: 150px;
+            padding: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .caja:hover{
+            transform: scale(1.1);
+        }
+
+        .rojo{
+            background-color: red;
+        }
+        .amarillo{
+            background-color: yellow;
+        }
+        .verde{
+            background-color: green;
+        }
+        .azul{
+            background-color: blue;
+        }
+    </style>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+    const elementos = document.querySelectorAll(".elemento");
+    const cajas = document.querySelectorAll(".caja")
+    const texto = document.querySelector("#texto")
+    cajas.forEach(function(caja){
+        caja.addEventListener("click", function(){
+        if(caja.classList.contains("rojo")){
+           texto.textContent = "Color rojo seleccionado!"
+        } else if(caja.classList.contains("amarillo")){
+           texto.textContent = "Color amarillo seleccionado!"
+        }else if(caja.classList.contains("verde")){
+           texto.textContent = "Color verde seleccionado!"
+        } else{
+            texto.textContent = "Color azul seleccionado!"
+        }
+    })
+    elementos.forEach(function(elemento) {
+    elemento.addEventListener("click", function() {
+    elementos.forEach(function(i) {
+        i.classList.remove("activo");
+    });
+    elemento.classList.add("activo");
+   
+});
+});
+}); 
+});
+    </script>
+<nav class="barra">
+    <ul class="links">
+        <li class="elemento"><a href="#">Inicio</a></li>
+        <li class="elemento"><a href="#">Servicios</a></li>
+        <li class="elemento"><a href="#">Sobre nosotros</a></li>
+        <li class="elemento"><a href="#">Contacto</a></li>
+    </ul>
+</nav>
+<div class="contenedor">
+  <div id="rojo" class="caja rojo">1</div>
+  <div id="amarillo" class="caja amarillo">2</div>
+  <div id="verde" class="caja verde">3</div>
+  <div id="azul" class="caja azul">4</div>
+</div>
+<h1 id="texto"></h1>
+
+</body>
+</html>

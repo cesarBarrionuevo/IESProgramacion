@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio 4</title>
+</head>
+<style>
+    .contenedor{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5;
+    }
+    .alumno-info{
+        width: 350px;
+        height: 115px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+    h2{
+        background-color: aliceblue;
+    }
+    h3{
+        font-size: 25px;
+    }
+    .aprobado{
+        background-color: rgb(128, 238, 128);
+    }
+    .desaprobado{
+        background-color: rgb(243, 132, 132);}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded",function(){
+     const alumnos = document.querySelectorAll(".nombre")
+     const texto = document.querySelector("#texto")
+     alumnos.forEach(function(alumno){
+        alumno.addEventListener("click",function(){
+            const nota = Number(alumno.dataset.nota);
+            texto.textContent = `Su nota es ${nota}`
+            alumnos.forEach(function(i){
+             i.classList.remove("aprobado")
+             i.classList.remove("desaprobado")
+            })
+            if(nota > 5){
+                alumno.classList.add("aprobado")
+            } else{
+                alumno.classList.add("desaprobado")
+            }
+        })
+     })
+    })
+</script>
+<body>
+    <h1>Haga click en un alumno para ver su nota</h1>
+    <h3 id="texto"></h3>
+    <main class="contenedor">
+        <div class="alumno-info">
+            <h2 class="nombre" data-nota="9">Nombre: Keane Zamora</h2>
+
+        </div>
+        <div class="alumno-info">
+            <h2 class="nombre" data-nota="8">Nombre: Nancy Grant</h2>
+
+        </div>
+        <div class="alumno-info">
+            <h2 class="nombre"  data-nota="6">Nombre: Teresa Austin</h2>
+
+        </div>
+        <div class="alumno-info">
+            <h2 class="nombre" data-nota="3">Nombre: Mohamed Lowed</h2>
+
+        </div>
+         <div class="alumno-info">
+            <h2 class="nombre" data-nota="7">Nombre: Yahya Lang</h2>
+
+        </div>
+          <div class="alumno-info">
+            <h2 class="nombre" data-nota="4">Nombre: Eden Daugherty</h2>
+
+        </div>
+        <div class="alumno-info">
+            <h2 class="nombre" data-nota="2">Nombre: Torin Forbes</h2>
+
+        </div>
+        <div class="alumno-info">
+            <h2 class="nombre" data-nota="10">Nombre: Donovan Montoya</h2>
+
+        </div>
+        <div class="alumno-info">
+            <h2 class="nombre" data-nota="4">Nombre: Marnie Ellison</h2>
+
+        </div>
+         <div class="alumno-info">
+            <h2 class="nombre" data-nota="1">Nombre: Ameer Hutchinson</h2>
+
+
+        </div>
+    </main>
+</body>
+</html>

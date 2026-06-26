@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 </title>
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const boton = document.querySelector(".boton");
+        const boton2 = document.querySelector(".boton2");
+        const parrafo = document.querySelector(".parrafo");
+        const caja = document.querySelector(".caja");
+        let esGrande = false;
+        parrafo.classList.add("ocultar");
+        boton.addEventListener("click", function() {
+            if (esGrande == false) {
+                caja.classList.add("grandecito");
+                boton.textContent = "achicar";
+                esGrande = true;
+            } else {
+                caja.classList.remove("grandecito");
+                esGrande = false;
+                boton.textContent = "agrandar";
+            }
+        });
+        boton2.addEventListener("click", function() {
+            if (parrafo.classList.contains("ocultar")) {
+                parrafo.classList.remove("ocultar");
+                parrafo.classList.add("mostrar");
+                boton2.textContent = "ocultar texto";
+            } else {
+                parrafo.classList.remove("mostrar");
+                parrafo.classList.add("ocultar");
+                boton2.textContent = "mostrar texto";
+            }
+        });
+    });
+</script>
+<body>
+    <div class="contenedor">
+        <h1>Ejercicio 1 a</h1>
+        <div class="caja"></div>
+        <button class="boton">agrandar</button>
+        <h2>Ejercicio 1 b</h2>
+        <p class="parrafo"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum numquam ratione cumque? Placeat explicabo consequuntur a quod ad aut maiores, tempore, voluptatum sed ut, et ex deserunt expedita harum unde.</p>
+        <button class="boton2">mostrar texto</button>
+    </div>
+    
+</body>
+<style>
+    .contenedor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .caja {
+        width: 80px;
+        height: 80px;
+        background-color: black ;
+    }
+    .grandecito {
+        width: 160px;
+        height: 160px;
+    }
+
+    .boton , .boton2 {
+        width: 150px;
+        height: 25px;
+        margin-top: 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+   
+    .parrafo {
+        width: 80%;
+        font-size: 18px;
+    }
+    .ocultar {
+        display: none;
+    }
+    .mostrar {
+        display: block;
+    }
+</style>
+
+</html>
