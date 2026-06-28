@@ -12,6 +12,16 @@
   grid-template-columns: repeat(2, 1fr); 
   gap: 20px; 
 }
+.boton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.boton button{
+    width: 200px;
+    font-size: 25px;
+}
 
 .tarjeta {
   display: flex;
@@ -59,51 +69,75 @@
   background-color: rgb(149, 149, 255);
 }
 .en-carrito{
-  background-color: rgb(110, 192, 110);
+  background-color: rgb(218, 218, 218);
 }
 </style>
 <script>
   document.addEventListener('DOMContentLoaded',function(){
   const buttons = document.querySelectorAll(".boton")
+  const botontotal = document.querySelector('.botontotal')
   buttons.forEach(function(button){
     button.addEventListener('click',function(){
        const tarjeta = button.closest(".tarjeta")
        const caja = tarjeta.querySelector(".caja")
        const stock = Number(caja.dataset.stock)
-       if(stock>0){
+       if(tarjeta.classList.contains('en-carrito')){
+           tarjeta.classList.remove('en-carrito')
+           alert('Producto quitado del carrito')
+           button.textContent='Agregar carrito'
+       } else{
+        if(stock>0){
           tarjeta.classList.add("en-carrito")
           alert("Producto agregado al carrito!")
+          button.textContent='Quitar del carrito'
         } else{
           alert("sin stock")
         }
+       }
     })
   })
+    botontotal.addEventListener('click',function(){
+         calcular()
+       })
+        function calcular(){
+        const total =document.querySelector('.total')
+        const productosseleccionados = document.querySelectorAll('.tarjeta.en-carrito')
+        let resultado = 0
+        productosseleccionados.forEach(function(ps){
+            const producto = ps.querySelector('.caja')
+            const precio = Number(producto.dataset.precio)
+            resultado+=precio
+        })
+        alert('el total es $' + resultado)
+       }
  })
 </script>
 <body>
     <div class="contenedor">
         <div class="tarjeta">
-          <div data-stock="2"class="caja rojo"></div>
-          <span>Stock: 2</span>
+          <div data-precio="1200" data-stock="2"class="caja rojo"></div>
+          <span>Precio: $1200 - Stock: 2</span>
           <button class="boton">Agregar carrito</button>
     </div>
     <div class="tarjeta">
-          <div data-stock="4" class="caja amarillo"></div>
-          <span>Stock: 4</span>
+          <div data-precio="1200" data-stock="4" class="caja amarillo"></div>
+          <span> Precio: $1200 - Stock: 4</span>
           <button class="boton">Agregar carrito</button>
     </div>
     <div class="tarjeta">
-          <div data-stock="2" class="caja verde"></div>
-          <span>Stock: 2</span>
+          <div data-precio="1200" data-stock="2" class="caja verde"></div>
+          <span> Precio: $1200 - Stock: 2</span>
           <button class="boton">Agregar carrito</button>
     </div>
     <div class="tarjeta">
-          <div data-stock="0" class="caja azul"></div>
-          <span>Sin stock</span>
+          <div data-precio="1200" data-stock="0" class="caja azul"></div>
+          <span>Precio: $1200 - Sin stock</span>
           <button class="boton">Agregar carrito</button>
     </div>
-            
-
     </div>
+    <div class="contenedor-total">
+       <button class="botontotal">mostrar total</button>
+    </div>
+    
 </body>
 </html>

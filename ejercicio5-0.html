@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio 5.0</title>
+</head>
+<style>
+    .lista{
+        list-style: none;
+    }
+    .ocultar {
+        display: none;
+        cursor: pointer;
+    }
+    .mostrar {
+        display: block;
+    }
+    .activo{
+        background-color: rgb(190, 190, 190);
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const texto = document.querySelector('.texto-horas')
+        const botones = document.querySelectorAll('.boton')
+        const materias = document.querySelectorAll('.materia')
+        materias.forEach(function(materia){
+            materia.classList.add('ocultar')
+        })
+        botones.forEach(function(boton){
+            boton.addEventListener('click',function(){
+                const cuatrimestre = boton.dataset.cuatrimestre
+                materias.forEach(function(materia){
+                    materia.classList.add('ocultar')
+                    if(materia.dataset.cuatrimestre=== cuatrimestre){
+                       materia.classList.add('mostrar')
+                    } else{
+                        materia.classList.remove('mostrar')
+                    }
+                })
+            })
+        })
+        materias.forEach(function(materia){
+            materia.addEventListener('click',function(){
+                materia.classList.toggle('activo')
+                calcular()
+            })
+        })
+       function calcular(){
+        const materiacalculo = document.querySelectorAll('.materia.activo')
+        let resultado = 0
+        materiacalculo.forEach(function(mc){
+            const horas = Number(mc.dataset.horas)
+            resultado+=horas
+        })
+        texto.textContent= `Cantidad de horas ${resultado}`
+       }
+    })
+</script>
+<body>
+    <h1>Materias:</h1>
+   <nav class="barra">
+    <button class="boton" data-cuatrimestre="1">1er cuatrimestre</button>
+    <button class="boton" data-cuatrimestre="2">2do cuatrimestre</button>
+   </nav> 
+   <main>
+    <h2 class="texto-horas"></h2>
+    <ul class="lista">
+       <li class="materia" data-cuatrimestre="1" data-nombre="Matemática" data-horas="2">Matemática</li>
+       <li class="materia" data-cuatrimestre="1" data-nombre="Administración" data-horas="5">Administración</li>
+       <li class="materia" data-cuatrimestre="1" data-nombre="Comunicación" data-horas="4">Comunicación</li>
+       <li class="materia" data-cuatrimestre="1" data-nombre="Cs de la investigación" data-horas="1">Cs de la investigación</li>
+       <li class="materia" data-cuatrimestre="1" data-nombre="Sistemas operativos" data-horas="3">Sistemas operativos</li>
+    </ul>
+    <ul class="lista">
+      <li class="materia" data-cuatrimestre="2" data-nombre="Estadística" data-horas="6">Estadística</li>
+      <li class="materia" data-cuatrimestre="2" data-nombre="Administración de empresas" data-horas="5">Administración de empresas</li>
+      <li class="materia" data-cuatrimestre="2" data-nombre="Udi" data-horas="3">Udi</li>
+      <li class="materia" data-cuatrimestre="2" data-nombre="Problemáticas contemporáneas" data-horas="2">Problemáticas contemporáneas</li>
+      <li class="materia" data-cuatrimestre="2" data-nombre="Base de datos" data-horas="3">Base de datos</li>
+    </ul>
+   </main>
+</body>
+</html>
