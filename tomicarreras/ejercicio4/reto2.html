@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <card class="tarjeta" data-stock="20">
+        <h3>Prod 1</h3>
+        <button>Agregar al carrito</button>
+    </card>
+    <card class="tarjeta" data-stock="0">
+        <h3>Prod 2</h3>
+        <button>Agregar al carrito</button>
+    </card>
+    <card class="tarjeta" data-stock="5">
+        <h3>Prod 3</h3>
+        <button>Agregar al carrito</button>
+    </card>
+    <card class="tarjeta" data-stock="0">
+        <h3>Prod 4</h3>
+        <button>Agregar al carrito</button>
+    </card>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+const tarjetas = document.querySelectorAll(".tarjeta");
+tarjetas.forEach(function(tarjeta) {
+tarjeta.addEventListener("click", function() {
+// Leemos el atributo data-precio del elemento clicado
+const precio = Number(tarjeta.dataset.stock);
+// Condición: si el precio es menor a 10000, lo destacamos
+if (stock > 0) {
+tarjeta.classList.toggle("destacado");
+}
+});
+});
+});
+    </script>
+    <footer>Alumno: Tomás Carreras Scheitlin</footer>
+</body>
+</html>

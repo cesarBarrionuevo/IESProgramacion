@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 1</title>
+    <style>
+        .caja {
+            width: 200px;
+            height: 200px;
+            background-color: #071118;
+        }
+
+        .zoom {
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+      <div id="imagen" class="caja"></div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+const parrafo = document.getElementById("imagen");
+// mouseenter: se dispara cuando el cursor ENTRA al elemento
+parrafo.addEventListener("mouseenter", function() {
+parrafo.classList.add("zoom");
+});
+// mouseleave: se dispara cuando el cursor SALE del elemento
+parrafo.addEventListener("mouseleave", function() {
+parrafo.classList.remove("zoom");
+});
+});
+      </script>
+    <footer>Alumno: Tomás Carreras Scheitlin</footer>
+</body>
+</html>

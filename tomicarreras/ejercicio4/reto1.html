@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .alumnos {
+            padding: 10px;
+            margin: 5px;
+        }
+    
+        .aprobado {
+            background-color: #3cff00;
+            color: white;
+        }
+        .desaprobado {
+            background-color: #ff0000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="alumnos" data-nota="6">tomi</li>
+        <li class="alumnos" data-nota="8">flor</li>
+        <li class="alumnos" data-nota="6">mari</li>
+        <li class="alumnos" data-nota="1">asasasa</li>
+    </ul>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+const alumnos = document.querySelectorAll(".alumnos");
+alumnos.forEach(function(alumno) {
+alumno.addEventListener("click", function() {
+// Leemos el atributo data-nota del elemento clicado
+const nota = Number(alumno.dataset.nota);
+// Condición: si la nota es menor a 10000, lo destacamos
+if (nota < 6) {
+alumno.classList.toggle("desaprobado");
+} else {
+alumno.classList.toggle("aprobado");
+}
+});
+});
+});
+    </script>
+
+    <footer>Alumno: Tomás Carreras Scheitlin</footer>
+    
+</body>
+</html>

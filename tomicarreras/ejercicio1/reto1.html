@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reto 1</title>
+  <style>
+    button {
+      padding: 10px 15px;
+      margin-bottom: 20px;
+    }
+    .caja {
+      width: 80px;
+      height: 80px;
+      background-color: #071118;
+    }
+    .grande {
+      width: 160px;
+      height: 160px;
+      background-color: #071118;
+    }
+  </style>
+</head>
+<body>
+  <button id="btnRedimensionar">Cambiar tamaño</button>
+  <div id="cuadrado" class="caja"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const boton = document.getElementById("btnRedimensionar");
+      const cuadrado = document.getElementById("cuadrado");
+
+      boton.addEventListener("click", function() {
+        cuadrado.classList.toggle("grande");
+      });
+    });
+  </script>
+    <footer>Alumno: Tomás Carreras Scheitlin</footer>
+</body>
+</html>
